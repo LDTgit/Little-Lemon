@@ -36,3 +36,191 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  overscroll-behavior: none;
+}
+.logo-nav, .heroSection>article:first-child, .highlightsSection, .testimonialsSection, .aboutSection{
+  padding-left:4vw;
+  padding-right: 4vw;
+}
+footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  background-color: #EDEFEE;
+}
+
+footer>section:first-child{
+  display: grid;
+  align-items: center;
+}
+
+footer>section>img{
+  display: flow;
+  justify-self: center;
+  align-items: center;
+}
+.logo-nav {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav menu{
+  display: flex;
+  justify-content: flex-end;
+}
+menu{
+  padding-inline-start: 0px;
+}
+
+nav menu li {
+  margin-left: 0.5rem;
+}
+
+li{
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Karla', sans-serif;
+  color: #333333;
+}
+
+a:hover {
+  text-shadow: #282c34;
+  color: grey;
+}
+
+.restaurantPicture {
+  width: 23.438rem;
+  height: 27.563rem;
+  border-radius: 1rem;
+  float: right;
+}
+.heroSection{
+  background-color: #495E57;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 25.375rem;
+}
+
+.heroSection h1{
+  font-family: 'Markazi Text', 'Roboto', sans-serif;
+  font-size: 4rem;
+  color: #F4CE14;
+  margin-block: 0em;
+
+}
+
+button {
+  background-color: #F4CE14;
+  border-color: #F4CE14;
+  font-size: 1.125rem;
+  font-weight: bold;
+  font-family: 'Karla', sans-serif;
+  border-radius: 1rem;
+  width: 12.5rem;
+  height: 3.75rem;
+}
+
+button:active{
+  background-color: #495E57;
+  border-color: #495E57;
+  color: #F4CE14;
+}
+
+.highlightsSection{
+  display: grid;
+  margin-top: 8vh;
+  grid-template-columns: 1fr;
+}
+
+.highlightsSection>article:first-child{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productImage{
+  width: 16.5rem;
+  height: 11.563rem;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border: solid 0.1rem;
+  object-fit: cover;
+}
+
+.cardsContainer{
+  display: grid;
+  grid-gap: 1.5rem;
+  overflow-x: scroll;
+  grid-auto-flow: column;
+  margin-block-start: 8vh;
+}
+
+
+
+.productCard{
+  background-color: #EDEFEE;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+
+.productCard:hover{
+  background-color: #FBDABB;
+}
+
+.titlePrice, .delivery{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price{
+  color: #EE9972;
+  font-family: 'Karla', sans-serif;
+}
+
+.testimonialCardsContainer{
+  display: grid;
+  grid-gap: 1.25rem;
+  overflow-x: scroll;
+  grid-auto-flow: column;
+  margin-block-start: 8vh;
+}
+
+.reviewImage{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.ownerPicture {
+  width: 23.438rem;
+  height: 27.563rem;
+  border-radius: 1rem;
+  float: right;
+  object-fit: cover;
+}
+
+.aboutSection{
+  display: flex;
+}
+
+
+@media only screen and (max-width: 690px) {
+  body {
+    background-color: lightblue;
+  }
+}

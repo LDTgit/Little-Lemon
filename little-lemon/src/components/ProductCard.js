@@ -13,7 +13,7 @@ const ProductCard = ({ title, price, description, imageSrc }) => {
             <Text color="grey" fontSize='sm' style={{ marginBottom: '0.8rem'}}>{description}</Text>
              <div className="delivery">
                 <p>Order a delivery</p>
-                <img src={iconDelivery} alt="delivery"></img>
+                <img className="deliveryIcon" src={iconDelivery} alt="delivery"></img>
             </div>
         </div>
     </VStack>

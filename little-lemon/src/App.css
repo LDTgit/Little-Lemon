@@ -42,9 +42,26 @@ body {
   margin-bottom: 1vh;
   overscroll-behavior: none;
 }
+
+h1 {
+  font-size: 5.9vw;
+}
+h2 {
+  font-size: 4.0vw;
+}
+h3 {
+  font-size: 3vw;
+}
+h5{
+  font-size: 2vw;
+}
+p, li, a {
+  font-size: 2.0vw;
+}
+
 .logo-nav, .heroSection>article:first-child, .highlightsSection, .testimonialsSection, .aboutSection{
-  padding-left:4vw;
-  padding-right: 4vw;
+  padding-left:1vw;
+  padding-right: 1vw;
 }
 footer {
   display: grid;
@@ -61,6 +78,7 @@ footer>section>img{
   display: flow;
   justify-self: center;
   align-items: center;
+  width: 20vw;
 }
 .logo-nav {
   display: grid;
@@ -100,23 +118,33 @@ a:hover {
   color: grey;
 }
 
+figure{
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-start: 0;
+}
+
 .restaurantPicture {
-  width: 23.438rem;
-  height: 27.563rem;
+  margin-top: 1rem;
+  /* width: 23.438rem; */
+  /* height: 27.563rem; */
+  height: 60vw;
   border-radius: 1rem;
   float: right;
+  object-fit: cover;
 }
 .heroSection{
   background-color: #495E57;
   color: white;
-  display: grid;
+  display: inline-grid;
   grid-template-columns: 1fr 1fr;
-  height: 25.375rem;
+  height: 60vw;
+  width: 100vw;
 }
 
 .heroSection h1{
   font-family: 'Markazi Text', 'Roboto', sans-serif;
-  font-size: 4rem;
+  font-size: 5.9vw;
   color: #F4CE14;
   margin-block: 0em;
 
@@ -125,12 +153,12 @@ a:hover {
 button {
   background-color: #F4CE14;
   border-color: #F4CE14;
-  font-size: 1.125rem;
+  font-size: 3vw;
   font-weight: bold;
   font-family: 'Karla', sans-serif;
   border-radius: 1rem;
-  width: 12.5rem;
-  height: 3.75rem;
+  width: 40vw;
+  min-height: 2.5em;
 }
 
 button:active{
@@ -149,11 +177,14 @@ button:active{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 1rem;
 }
 
 .productImage{
-  width: 16.5rem;
-  height: 11.563rem;
+  /* width: 16.5rem;
+  height: 11.563rem; */
+  width: 45vw;
+  height: 30vw;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   border: solid 0.1rem;
@@ -168,12 +199,15 @@ button:active{
   margin-block-start: 8vh;
 }
 
-
+.deliveryIcon{
+  width: 5vw;
+}
 
 .productCard{
   background-color: #EDEFEE;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  width: 45vw;
 }
 
 .productCard:hover{
@@ -207,20 +241,68 @@ button:active{
 }
 
 .ownerPicture {
-  width: 23.438rem;
-  height: 27.563rem;
+  /* width: 23.438rem;
+  height: 27.563rem; */
   border-radius: 1rem;
   float: right;
   object-fit: cover;
+  width: 60vw;
+  height: fit-content;
 }
 
 .aboutSection{
   display: flex;
 }
 
-
 @media only screen and (max-width: 690px) {
   body {
     background-color: lightblue;
   }
 }
+
+.bm-burger-bars {
+  background: #373a47;
+}
+
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+.logo{
+  max-width: 30vw;
+}
+.bm-item-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.menu-item-sm{
+  font-size: 4em;
+  color: white;
+}
+
+.bm-burger-button {
+  position: relative;
+  right: 10px;
+  padding: 0;
+  margin: 0;
+  width: 35px;
+  height: 25px;
+  margin-top: 0px;
+  padding-top: 0px;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.bm-overlay {
+  background: rgba(255, 255, 255, 0.3);
+  top: 0px;
+  left: 0px;
+}
+

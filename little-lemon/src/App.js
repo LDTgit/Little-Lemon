@@ -10,7 +10,9 @@ function App() {
     <>
       <section className="logo-nav">
         <Header />
-        <Nav />
+        <div className='navContainer'>
+          <Nav />
+        </div>
       </section>
       <Main />
       <Footer />

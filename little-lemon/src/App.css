@@ -18,25 +18,31 @@
   p, li, a {
     font-size: 2vw;
   }
+  button{
+    font-size: 2vw;
+  }
 }
 @media screen and (min-width: 850px) {
   h1 {
-    font-size: 40px;
-  }
-  h2 {
     font-size: 35px;
   }
-  h3 {
+  h2 {
     font-size: 30px;
   }
-  h4{
+  h3 {
     font-size: 25px;
   }
-  h5{
+  h4{
     font-size: 20px;
+  }
+  h5{
+    font-size: 18px;
   }
   p, li, a {
     font-size: 16px;
+  }
+  button {
+    font-size: 1.5vw;
   }
 }
 
@@ -180,7 +186,7 @@ figure{
 button {
   background-color: #F4CE14;
   border-color: #F4CE14;
-  font-size: 2vw;
+  
   font-weight: bold;
   font-family: 'Karla', sans-serif;
   border-radius: 1rem;

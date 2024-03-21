@@ -3,22 +3,17 @@ import { useState } from 'react';
 import { Box } from "@chakra-ui/react";
 
 
-const BookingPage = () => {
-  function getDate() {
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const year = today.getFullYear();
-    const date = today.getDate();
-    return `${year}-${month}-${date}`;
-  }
+const BookingForm = ({availableTimes, updateTimes, todayDate}) => {
+
   const [name, setName] = useState("");
-  const [date, setDate] = useState(getDate());
+  const [date, setDate] = useState(todayDate);
   const [guests, setGuests] = useState(1);
-  const [time, setTime] = useState("17:00");
+  const [time, setTime] = useState(availableTimes[0]);
   const [occasion, setOccasion] = useState("Birthday")
-  const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]);
+
 
   const handleSubmit = (e) => {
+    updateTimes(date, time);
     e.preventDefault();
     console.log({
       name: name,
@@ -83,4 +78,4 @@ const BookingPage = () => {
   );
 };
 
-export default BookingPage
+export default BookingForm

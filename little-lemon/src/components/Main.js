@@ -3,8 +3,10 @@ import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
 import TestimonialCard from "./TestimonialCard";
 import restaurantFoodImg from '../images/restauranfood.jpg';
-// import {useState} from 'react';
+import { useReducer } from 'react';
 import BookingPage from "./BookingPage";
+
+const ALL_AVAILABLE_TIMES = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 
 const products = [
   {
@@ -86,8 +88,36 @@ const ratings = [
   }
 ]
 
+const reducer = (state, action) => {
+  if (action.type === "remove_time") {
+    const newState =
+    {
+      [action.payload.date]:state[action.payload.date].filter(time => time !== action.payload.selectedTime)
+    }
+    console.log(newState);
+    return newState
+  }
+  console.log(action);
+}
+
+const getTodayDate = () => {
+  const today = new Date();
+  const month = (today.getMonth() + 1) < 10 ? `0${today.getMonth() + 1}` : today.getMonth() + 1;
+  const year = today.getFullYear();
+  const date = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
+  return `${year}-${month}-${date}`;
+}
+
+
 
 function Main({ toggle, changeToggle }) {
+  const todayDate=getTodayDate();
+  const availableTimes = { [todayDate]: ALL_AVAILABLE_TIMES };
+  const [timesState, dispach] = useReducer(reducer, availableTimes);
+
+  const updateTimes = (selectedDate, selectedTime) => {
+    dispach({ type: 'remove_time', payload: { date: selectedDate, selectedTime: selectedTime } });
+  };
   return (
     <main>
       <div>
@@ -98,7 +128,7 @@ function Main({ toggle, changeToggle }) {
             <Text>We are a family owned Mediteranean restaurant, focused on traditional recipes served with a modern twist.</Text>
             <button id="book-button" onClick={changeToggle}>{!toggle ? "Reserve a table" : "Back"}</button>
             {toggle && (
-              <BookingPage />
+              <BookingPage availableTimes={timesState[todayDate]} updateTimes={updateTimes} todayDate={todayDate}/>
             )}
           </article>
           <figure>

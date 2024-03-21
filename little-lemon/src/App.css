@@ -1,3 +1,45 @@
+@media screen and (max-width: 849px) {
+
+  h1 {
+    font-size: 4vw;
+  }
+  h2 {
+    font-size: 3.5vw;
+  }
+  h3 {
+    font-size: 3vw;
+  }
+  h4{
+    font-size: 2.5vw;
+  }
+  h5{
+    font-size: 2.5vw;
+  }
+  p, li, a {
+    font-size: 2vw;
+  }
+}
+@media screen and (min-width: 850px) {
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 35px;
+  }
+  h3 {
+    font-size: 30px;
+  }
+  h4{
+    font-size: 25px;
+  }
+  h5{
+    font-size: 20px;
+  }
+  p, li, a {
+    font-size: 16px;
+  }
+}
+
 .App {
   text-align: center;
 }
@@ -41,22 +83,6 @@ body {
   margin-top: 1vh;
   margin-bottom: 1vh;
   overscroll-behavior: none;
-}
-
-h1 {
-  font-size: 5.9vw;
-}
-h2 {
-  font-size: 4.0vw;
-}
-h3 {
-  font-size: 3vw;
-}
-h5{
-  font-size: 2vw;
-}
-p, li, a {
-  font-size: 2.0vw;
 }
 
 .logo-nav, .heroSection>article:first-child, .highlightsSection, .testimonialsSection, .aboutSection{
@@ -126,9 +152,7 @@ figure{
 
 .restaurantPicture {
   margin-top: 1rem;
-  /* width: 23.438rem; */
-  /* height: 27.563rem; */
-  height: 60vw;
+  height: 50vw;
   border-radius: 1rem;
   float: right;
   object-fit: cover;
@@ -138,26 +162,29 @@ figure{
   color: white;
   display: inline-grid;
   grid-template-columns: 1fr 1fr;
-  height: 60vw;
-  width: 100vw;
+  height: 40vw;
+}
+
+.height-fit-content {
+  height: fit-content;
 }
 
 .heroSection h1{
   font-family: 'Markazi Text', 'Roboto', sans-serif;
-  font-size: 5.9vw;
+  font-size: 4vw;
   color: #F4CE14;
   margin-block: 0em;
-
+  padding-top: 2vh;
 }
 
 button {
   background-color: #F4CE14;
   border-color: #F4CE14;
-  font-size: 3vw;
+  font-size: 2vw;
   font-weight: bold;
   font-family: 'Karla', sans-serif;
   border-radius: 1rem;
-  width: 40vw;
+  width: 20vw;
   min-height: 2.5em;
 }
 
@@ -169,7 +196,7 @@ button:active{
 
 .highlightsSection{
   display: grid;
-  margin-top: 8vh;
+  margin-top: 10%;
   grid-template-columns: 1fr;
 }
 
@@ -181,10 +208,9 @@ button:active{
 }
 
 .productImage{
-  /* width: 16.5rem;
-  height: 11.563rem; */
-  width: 45vw;
-  height: 30vw;
+  width: 35vw;
+  max-width: 300px;
+  height: 20vw;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   border: solid 0.1rem;
@@ -196,7 +222,6 @@ button:active{
   grid-gap: 1.5rem;
   overflow-x: scroll;
   grid-auto-flow: column;
-  margin-block-start: 8vh;
 }
 
 .deliveryIcon{
@@ -207,7 +232,8 @@ button:active{
   background-color: #EDEFEE;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  width: 45vw;
+  width: 35vw;
+  max-width: 300px;
 }
 
 .productCard:hover{
@@ -218,6 +244,8 @@ button:active{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .price{
@@ -230,19 +258,16 @@ button:active{
   grid-gap: 1.25rem;
   overflow-x: scroll;
   grid-auto-flow: column;
-  margin-block-start: 8vh;
 }
 
 .reviewImage{
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 10vw;
+  height: 10vw;
   object-fit: cover;
 }
 
 .ownerPicture {
-  /* width: 23.438rem;
-  height: 27.563rem; */
   border-radius: 1rem;
   float: right;
   object-fit: cover;
@@ -254,7 +279,7 @@ button:active{
   display: flex;
 }
 
-@media only screen and (max-width: 690px) {
+@media only screen and (max-width: 480px) {
   body {
     background-color: lightblue;
   }
@@ -304,5 +329,16 @@ button:active{
   background: rgba(255, 255, 255, 0.3);
   top: 0px;
   left: 0px;
+}
+
+#form-cont {
+  display: grid;
+  max-width: 200px;
+  gap: 20px;
+}
+
+.form-field{
+  display: grid;
+  padding-block-end: 1vh;
 }
 

@@ -1,16 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import useSubmit from "../hooks/useSubmit";
 import { Box } from "@chakra-ui/react";
 
 
-const BookingForm = ({availableTimes, updateTimes, todayDate}) => {
+const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCurrentDate}) => {
 
   const [name, setName] = useState("");
   const [date, setDate] = useState(todayDate);
   const [guests, setGuests] = useState(1);
   const [time, setTime] = useState(availableTimes[0]);
   const [occasion, setOccasion] = useState("Birthday")
-
 
   const handleSubmit = (e) => {
     updateTimes(date, time);
@@ -24,7 +23,15 @@ const BookingForm = ({availableTimes, updateTimes, todayDate}) => {
     })
   }
 
+  function getDateTimes (newDate) {
+    setCurrentDate(newDate);
+    setDate(newDate);
+    createTimes(newDate);
+  }
   // const {isLoading, response, submit} = useSubmit();
+  useEffect(()=>{
+    setTime(availableTimes[0]);
+  }, [availableTimes]);
 
   return (
     <Box p={6} rounded="md" id='form-cont'>
@@ -32,17 +39,18 @@ const BookingForm = ({availableTimes, updateTimes, todayDate}) => {
         <fieldset>
           <div className='form-field'>
             <label htmlFor='name'>Name:</label>
-            <input id='name' type='text' placeholder='Name' name='name' value={name}
+            <input aria-required id='name' type='text' placeholder='Name' name='name' value={name}
               onChange={(e) => setName(e.target.value)} />
           </div>
           <div className='form-field'>
             <label htmlFor='res-date'>Choose date:</label>
             <input id='res-date' type='date' name='res-date' value={date}
-              onChange={(e) => setDate(e.target.value)} />
+              onChange={(e) => getDateTimes(e.target.value)} />
           </div>
           <div className='form-field'>
             <label htmlFor="guests">Number of guests</label>
             <input
+              aria-required
               id="guests"
               typeof='number'
               placeholder='1'

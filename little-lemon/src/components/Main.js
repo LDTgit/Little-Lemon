@@ -3,7 +3,7 @@ import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
 import TestimonialCard from "./TestimonialCard";
 import restaurantFoodImg from '../images/restauranfood.jpg';
-import { useReducer } from 'react';
+import { useState, useReducer } from 'react';
 import BookingPage from "./BookingPage";
 
 const ALL_AVAILABLE_TIMES = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
@@ -89,15 +89,23 @@ const ratings = [
 ]
 
 const reducer = (state, action) => {
-  if (action.type === "remove_time") {
-    const newState =
-    {
-      [action.payload.date]:state[action.payload.date].filter(time => time !== action.payload.selectedTime)
+  switch (action.type) {
+    case 'create_new_date': {
+      return {
+        ...state,
+        [action.payload.date]:action.payload.time
+      };
     }
-    console.log(newState);
-    return newState
+    case 'remove_time': {
+      const newState =
+      {
+        [action.payload.date]:state[action.payload.date].filter(times => times !== action.payload.time)
+      }
+      return newState;
+    }
+    default: console.log("Exited switch")
   }
-  console.log(action);
+  throw Error('Unknown action: ' + action.type);
 }
 
 const getTodayDate = () => {
@@ -109,15 +117,29 @@ const getTodayDate = () => {
 }
 
 
-
 function Main({ toggle, changeToggle }) {
-  const todayDate=getTodayDate();
-  const availableTimes = { [todayDate]: ALL_AVAILABLE_TIMES };
-  const [timesState, dispach] = useReducer(reducer, availableTimes);
-
+  // const todayDate=getTodayDate();
+  const [todayDate, setCurrentDate] = useState(getTodayDate());
+  function initializeTimes() {
+    return { [todayDate]: ALL_AVAILABLE_TIMES };
+  }
+  function updateDate(nextDate){
+    setCurrentDate(nextDate);
+  }
+  // const availableTimes = { [todayDate]: ALL_AVAILABLE_TIMES };
+  const [availableTimes, dispach] = useReducer(reducer, initializeTimes());
+  // console.log(availableTimes);
   const updateTimes = (selectedDate, selectedTime) => {
-    dispach({ type: 'remove_time', payload: { date: selectedDate, selectedTime: selectedTime } });
+    dispach({ type: 'remove_time', payload: { date: selectedDate, time: selectedTime } });
   };
+  const createTimes = (selectedDate) => {
+    const dateExists = availableTimes[selectedDate];
+    if (dateExists){
+      console.log(dateExists)
+    }  else {
+      dispach({ type: 'create_new_date', payload: { date: selectedDate, time: ALL_AVAILABLE_TIMES} });
+    }
+  }
   return (
     <main>
       <div>
@@ -128,7 +150,7 @@ function Main({ toggle, changeToggle }) {
             <Text>We are a family owned Mediteranean restaurant, focused on traditional recipes served with a modern twist.</Text>
             <button id="book-button" onClick={changeToggle}>{!toggle ? "Reserve a table" : "Back"}</button>
             {toggle && (
-              <BookingPage availableTimes={timesState[todayDate]} updateTimes={updateTimes} todayDate={todayDate}/>
+              <BookingPage availableTimes={availableTimes[todayDate]} updateTimes={updateTimes} createTimes={createTimes} todayDate={todayDate} setCurrentDate={updateDate}/>
             )}
           </article>
           <figure>

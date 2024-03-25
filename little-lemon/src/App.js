@@ -5,7 +5,6 @@ import Main from  './components/Main';
 import Footer from  './components/Footer';
 import {useState} from 'react';
 
-
 function App() {
   const [toggle, setToggle] = useState(false);
     function changeToggle() {

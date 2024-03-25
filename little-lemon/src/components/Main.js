@@ -116,19 +116,17 @@ const getTodayDate = () => {
   return `${year}-${month}-${date}`;
 }
 
+export function initializeTimes(todayDate) {
+  return { [todayDate]: ALL_AVAILABLE_TIMES };
+}
+
 
 function Main({ toggle, changeToggle }) {
-  // const todayDate=getTodayDate();
   const [todayDate, setCurrentDate] = useState(getTodayDate());
-  function initializeTimes() {
-    return { [todayDate]: ALL_AVAILABLE_TIMES };
-  }
   function updateDate(nextDate){
     setCurrentDate(nextDate);
   }
-  // const availableTimes = { [todayDate]: ALL_AVAILABLE_TIMES };
-  const [availableTimes, dispach] = useReducer(reducer, initializeTimes());
-  // console.log(availableTimes);
+  const [availableTimes, dispach] = useReducer(reducer, initializeTimes(todayDate));
   const updateTimes = (selectedDate, selectedTime) => {
     dispach({ type: 'remove_time', payload: { date: selectedDate, time: selectedTime } });
   };

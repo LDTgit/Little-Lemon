@@ -11,6 +11,7 @@
   }
   h4{
     font-size: 2.5vw;
+    margin-block: 0px;
   }
   h5{
     font-size: 2.5vw;
@@ -34,6 +35,7 @@
   }
   h4{
     font-size: 20px;
+    margin-block: 0px;
   }
   h5{
     font-size: 18px;
@@ -240,6 +242,7 @@ button:active{
   border-top-left-radius: 1rem;
   width: 35vw;
   max-width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 .productCard:hover{
@@ -264,6 +267,19 @@ button:active{
   grid-gap: 1.25rem;
   overflow-x: scroll;
   grid-auto-flow: column;
+}
+.testimonialCard{
+  /* min-width: 30vw */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.testimonialContainer{
+  margin: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20vw;
 }
 
 .reviewImage{
@@ -348,3 +364,29 @@ button:active{
   padding-block-end: 1vh;
 }
 
+.starReceived{
+  color:#F4CE14;
+}
+.starList{
+  display: flex;
+  padding-inline-start: 0px;
+}
+.confirm-booking-page{
+  box-shadow: 5px 5px 5px #000;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #495E57;
+  margin-left: 8px;
+  margin-top: 8px
+}
+#confirm-booking-section{
+  color: #F4CE14;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-page button a {
+  color: black;
+  text-decoration: none;
+}

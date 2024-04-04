@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-// import useSubmit from "../hooks/useSubmit";
 import { Box } from "@chakra-ui/react";
+// import { Form } from "react-router-dom";
 
-
-const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCurrentDate}) => {
-
+const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCurrentDate, changeToggle, submitForm}) => {
   const [name, setName] = useState("");
   const [date, setDate] = useState(todayDate);
   const [guests, setGuests] = useState(1);
@@ -14,7 +12,10 @@ const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCu
   const handleSubmit = (e) => {
     updateTimes(date, time);
     e.preventDefault();
-    console.log({
+    // submitAPI(e);
+    // setSubmitted(true);
+    changeToggle();
+    submitForm({
       name: name,
       date: date,
       guests: guests,
@@ -23,15 +24,35 @@ const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCu
     })
   }
 
+  // const reservation = {
+  //   name: name,
+  //   date: date,
+  //   guests: guests,
+  //   time: time,
+  //   occasion: occasion,
+  // };
+
   function getDateTimes (newDate) {
     setCurrentDate(newDate);
     setDate(newDate);
     createTimes(newDate);
   }
-  // const {isLoading, response, submit} = useSubmit();
+
   useEffect(()=>{
     setTime(availableTimes[0]);
   }, [availableTimes]);
+
+  function SubmitButton(){
+    const firstDate = new Date();
+    const secondDate = new Date(todayDate);
+    if (name && (availableTimes.length>0) && (firstDate.setHours(0,0,0,0)<=secondDate)){
+      return <button type="submit">Make Your Reservation</button>
+    } else {
+      return <button type="submit" disabled>Make Your Reservation</button>
+    };
+  };
+
+
 
   return (
     <Box p={6} rounded="md" id='form-cont'>
@@ -39,7 +60,7 @@ const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCu
         <fieldset>
           <div className='form-field'>
             <label htmlFor='name'>Name:</label>
-            <input aria-required id='name' type='text' placeholder='Name' name='name' value={name}
+            <input required id='name' type='text' placeholder='Name' name='name' value={name}
               onChange={(e) => setName(e.target.value)} />
           </div>
           <div className='form-field'>
@@ -48,7 +69,7 @@ const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCu
               onChange={(e) => getDateTimes(e.target.value)} />
           </div>
           <div className='form-field'>
-            <label htmlFor="guests">Number of guests</label>
+            <label htmlFor="guests">Number of guests:</label>
             <input
               aria-required
               id="guests"
@@ -70,7 +91,7 @@ const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCu
             </select>
           </div>
           <div className='form-field'>
-            <label htmlFor="occasion">Occasion</label>
+            <label htmlFor="occasion">Occasion:</label>
             <select id="occasion" value={occasion}
               onChange={(e) => setOccasion(e.target.value)}>
               <option value="Birthday">Birthday</option>
@@ -78,7 +99,7 @@ const BookingForm = ({availableTimes, updateTimes, createTimes, todayDate, setCu
             </select>
           </div>
 
-          <button type="submit"> Make Your reservation </button>
+          <SubmitButton />
 
         </fieldset>
       </form>

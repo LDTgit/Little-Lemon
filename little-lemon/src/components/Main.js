@@ -3,10 +3,10 @@ import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import ProductCard from "./ProductCard";
 import TestimonialCard from "./TestimonialCard";
 import restaurantFoodImg from '../images/restauranfood.jpg';
-import { useState, useReducer } from 'react';
+import { useState, useReducer} from 'react';
 import BookingPage from "./BookingPage";
+import ConfirmedBooking from "./ConfirmedBooking";
 
-const ALL_AVAILABLE_TIMES = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 
 const products = [
   {
@@ -59,13 +59,13 @@ const ratings = [
   {
     rating: 5,
     name: "Jane Doe",
-    review: "Nulla viverra, ligula sed sodales laoreet, mi lectus bibendum lorem, et consequat lectus nisi non urna.",
+    review: "Nulla viverra, ligula sed sodales laoreet, mi lectus bibendum lorem.",
     getImageSrc: () => require("../images/client.jpeg")
   },
   {
     rating: 4,
     name: "Johnny Doe",
-    review: "Sed mattis facilisis dolor eu viverra. Proin pellentesque blandit ante, vitae semper ante hendrerit et.",
+    review: "Sed mattis facilisis dolor eu viverra. Proin pellentesque blandit ante.",
     getImageSrc: () => require("../images/client.jpeg")
   },
   {
@@ -83,30 +83,12 @@ const ratings = [
   {
     rating: 5,
     name: "Timette Doe",
-    review: " Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
+    review: " Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.",
     getImageSrc: () => require("../images/client.jpeg")
   }
 ]
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'create_new_date': {
-      return {
-        ...state,
-        [action.payload.date]:action.payload.time
-      };
-    }
-    case 'remove_time': {
-      const newState =
-      {
-        [action.payload.date]:state[action.payload.date].filter(times => times !== action.payload.time)
-      }
-      return newState;
-    }
-    default: console.log("Exited switch")
-  }
-  throw Error('Unknown action: ' + action.type);
-}
+const ALL_AVAILABLE_TIMES = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 
 const getTodayDate = () => {
   const today = new Date();
@@ -116,16 +98,43 @@ const getTodayDate = () => {
   return `${year}-${month}-${date}`;
 }
 
+
 export function initializeTimes(todayDate) {
   return { [todayDate]: ALL_AVAILABLE_TIMES };
 }
 
 
-function Main({ toggle, changeToggle }) {
+function Main() {
+  const [toggle, setToggle] = useState(false);
+  function changeToggle() {
+    setToggle(!toggle);
+  }
   const [todayDate, setCurrentDate] = useState(getTodayDate());
+
   function updateDate(nextDate){
     setCurrentDate(nextDate);
   }
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'create_new_date': {
+        return {
+          ...state,
+          [action.payload.date]:action.payload.time
+        };
+      }
+      case 'remove_time': {
+        const newState =
+        {
+          [action.payload.date]:state[action.payload.date].filter(times => times !== action.payload.time)
+        }
+        return newState;
+      }
+      default: console.log("Exited switch")
+    }
+    throw Error('Unknown action: ' + action.type);
+  }
+
   const [availableTimes, dispach] = useReducer(reducer, initializeTimes(todayDate));
   const updateTimes = (selectedDate, selectedTime) => {
     dispach({ type: 'remove_time', payload: { date: selectedDate, time: selectedTime } });
@@ -138,18 +147,65 @@ function Main({ toggle, changeToggle }) {
       dispach({ type: 'create_new_date', payload: { date: selectedDate, time: ALL_AVAILABLE_TIMES} });
     }
   }
+
+  const [submitted, setSubmitted]=useState(false)
+
+  // const [bookingItems, setBookingItem] = useState({name:'', date:'', date:'', guests:'', time:'', occasion:''});
+  // function bookingInfo(name, date, guests, time, occasion){
+  //   setBookingItem({
+  //     name: name,
+  //     date: date,
+  //     guests: guests,
+  //     time: time,
+  //     occasion: occasion
+  //   })
+  // }
+
+  function submitForm (data){
+    console.log(data);
+    // console.log(data.name);
+    // console.log(data.date);
+    // console.log(availableTimes);
+    // console.log(availableTimes[data.date]);
+    console.log(availableTimes[data.date]);
+    console.log(data.time);
+    if (availableTimes[data.date].includes(data.time) ){
+      setSubmitted(true);
+      console.log(availableTimes[data.date]);
+      console.log(data.time);
+    } else {
+      setSubmitted(false);
+    }
+    // for (let i=0; i<availableTimes[data.date].length; i++){
+    //   if (availableTimes[data.date][i] === data.time){
+    //     setSubmitted(true);
+    //     console.log(availableTimes[data.date][i]);
+    //     console.log(data.time);
+    //     break;
+    //   }
+    //   else {
+    //     setSubmitted(false);
+    //   }
+    // }
+    // (availableTime[data.date] && )
+    // bookingInfo(data.name, data.date, data.guests, data.time, data.occasion);
+  }
+
+
+
   return (
     <main>
       <div>
-        <section className={`heroSection ${toggle ? "height-fit-content" : ""}`}>
+        <section id="heroSection" className={`heroSection ${toggle ? "height-fit-content" : ""}`}>
           <article>
             <Heading as="h1">Little Lemon</Heading>
             <Heading as="h2">Chicago</Heading>
             <Text>We are a family owned Mediteranean restaurant, focused on traditional recipes served with a modern twist.</Text>
             <button id="book-button" onClick={changeToggle}>{!toggle ? "Reserve a table" : "Back"}</button>
             {toggle && (
-              <BookingPage availableTimes={availableTimes[todayDate]} updateTimes={updateTimes} createTimes={createTimes} todayDate={todayDate} setCurrentDate={updateDate}/>
+              <BookingPage availableTimes={availableTimes[todayDate]} updateTimes={updateTimes} createTimes={createTimes} todayDate={todayDate} setCurrentDate={updateDate} changeToggle={changeToggle} submitForm={submitForm}/>
             )}
+            {submitted && !toggle && (< ConfirmedBooking submitted={submitted}/>)}
           </article>
           <figure>
             <img className="restaurantPicture" src={restaurantFoodImg} alt="restaurant food" />
@@ -192,7 +248,7 @@ function Main({ toggle, changeToggle }) {
           ))}
         </Box>
       </section>
-      <section className="aboutSection">
+      <section className="aboutSection" id="aboutSection">
         <div>
           <Heading as="h1">Little Lemon</Heading>
           <h2>Chicago</h2>

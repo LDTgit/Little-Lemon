@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import {initializeTimes, Main} from './components/Main';
+import {initializeTimes} from './components/Main';
 import BookingForm from "./components/BookingForm";
 
 
@@ -17,7 +17,7 @@ const todayDate = getTodayDate();
 
 test('Renders the BookingForm heading', () => {
   render(<BookingForm availableTimes={ALL_AVAILABLE_TIMES}/>);
-  const buttonElement = screen.getByText("Make Your reservation");
+  const buttonElement = screen.getByText("Make Your Reservation");
   expect(buttonElement).toBeInTheDocument();
 })
 
@@ -31,8 +31,11 @@ test('initializeTimes', () => {
 
 test('updateTimes', () => {
     const handleSubmit = jest.fn();
-    render(<BookingForm availableTimes={ALL_AVAILABLE_TIMES} updateTimes={handleSubmit} todayDate={todayDate}/>);
+    const doNothing = jest.fn();
+    render(<BookingForm availableTimes={ALL_AVAILABLE_TIMES} updateTimes={handleSubmit} todayDate={todayDate} changeToggle={doNothing} submitForm={doNothing}/>);
     const result = screen.getAllByRole('option')[0].textContent;
+    const input = screen.getByLabelText('Name:');
+    fireEvent.change(input, {target: {value: 'Laura'}})
     fireEvent.click(screen.getByRole('button'));
     expect(handleSubmit).toHaveBeenCalledWith(
       todayDate, result,

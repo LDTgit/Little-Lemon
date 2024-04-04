@@ -2,16 +2,49 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Main from './components/Main';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ErrorPage from "./ErrorPage";
+// import ConfirmedBooking from './components/ConfirmedBooking';
+import MenuPage from './components/MenuPage';
+// import {useState} from 'react';
+// import BookingPage from './components/BookingPage';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+// function ShowBooking (){
+//   const [toggle, setToggle] = useState(false);
+//   function changeToggle() {
+//     setToggle(!toggle);
+//   }
+// }
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      // {
+      //   path: "booking-confirmation",
+      //   element: <ConfirmedBooking />,
+      // },
+      {
+        path: "",
+        element: <Main />,
+      },
+      {
+        path: '/menu',
+        element: <MenuPage />,
+      },
+    ],
+  },
+
+]);
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

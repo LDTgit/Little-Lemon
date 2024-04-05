@@ -5,7 +5,7 @@ import { stack as Menu } from 'react-burger-menu';
 
 const CustomBurgerIcon = () => <img src={require('../images/🦆 icon _hamburger menu_.svg').default} alt='hamburger menu' className='hamburgerImg' />;
 
-function Nav({ toggle, changeToggle }) {
+function Nav() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {

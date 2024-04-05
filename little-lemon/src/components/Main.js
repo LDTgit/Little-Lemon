@@ -8,85 +8,85 @@ import BookingPage from "./BookingPage";
 import ConfirmedBooking from "./ConfirmedBooking";
 
 
-const products = [
-  {
-    title: "Greek salad",
-    price: "$12.99",
-    description:
-      "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
-    getImageSrc: () => require("../images/greek salad.jpg")
-  },
-  {
-    title: "Bruchetta",
-    price: "$ 5.99",
-    description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
-    getImageSrc: () => require("../images/bruchetta.svg").default
-  },
-  {
-    title: "Lemon Dessert",
-    price: "$ 5.00",
-    description: "This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
-    getImageSrc: () => require("../images/lemon dessert.jpg")
-  },
-  {
-    title: "Greek salad 2",
-    price: "$12.99",
-    description:
-      "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
-    getImageSrc: () => require("../images/greek salad.jpg")
-  },
-  {
-    title: "Bruchetta 2",
-    price: "$ 5.99",
-    description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
-    getImageSrc: () => require("../images/bruchetta.svg").default
-  },
-  {
-    title: "Lemon Dessert 2",
-    price: "$ 5.00",
-    description: "This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
-    getImageSrc: () => require("../images/lemon dessert.jpg")
-  },
-]
+// const products = [
+//   {
+//     title: "Greek salad",
+//     price: "$12.99",
+//     description:
+//       "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
+//     getImageSrc: () => require("../images/greek salad.jpg")
+//   },
+//   {
+//     title: "Bruchetta",
+//     price: "$ 5.99",
+//     description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
+//     getImageSrc: () => require("../images/bruchetta.svg").default
+//   },
+//   {
+//     title: "Lemon Dessert",
+//     price: "$ 5.00",
+//     description: "This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
+//     getImageSrc: () => require("../images/lemon dessert.jpg")
+//   },
+//   {
+//     title: "Greek salad 2",
+//     price: "$12.99",
+//     description:
+//       "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
+//     getImageSrc: () => require("../images/greek salad.jpg")
+//   },
+//   {
+//     title: "Bruchetta 2",
+//     price: "$ 5.99",
+//     description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
+//     getImageSrc: () => require("../images/bruchetta.svg").default
+//   },
+//   {
+//     title: "Lemon Dessert 2",
+//     price: "$ 5.00",
+//     description: "This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
+//     getImageSrc: () => require("../images/lemon dessert.jpg")
+//   },
+// ]
 
-const ratings = [
-  {
-    rating: 4,
-    name: "John Doe",
-    review: "Vestibulum pretium neque quis dui pretium, eu pretium lorem viverra.",
-    getImageSrc: () => require("../images/client.jpeg")
-  },
-  {
-    rating: 5,
-    name: "Jane Doe",
-    review: "Nulla viverra, ligula sed sodales laoreet, mi lectus bibendum lorem.",
-    getImageSrc: () => require("../images/client.jpeg")
-  },
-  {
-    rating: 4,
-    name: "Johnny Doe",
-    review: "Sed mattis facilisis dolor eu viverra. Proin pellentesque blandit ante.",
-    getImageSrc: () => require("../images/client.jpeg")
-  },
-  {
-    rating: 5,
-    name: "Jannette Doe",
-    review: "In aliquam eros neque, ullamcorper placerat tellus porttitor vel.",
-    getImageSrc: () => require("../images/client.jpeg")
-  },
-  {
-    rating: 4,
-    name: "Tim Doe",
-    review: "Nunc mattis urna non dui ullamcorper, ut feugiat dui cursus.",
-    getImageSrc: () => require("../images/client.jpeg")
-  },
-  {
-    rating: 5,
-    name: "Timette Doe",
-    review: " Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.",
-    getImageSrc: () => require("../images/client.jpeg")
-  }
-]
+// const ratings = [
+//   {
+//     rating: 4,
+//     name: "John Doe",
+//     review: "Vestibulum pretium neque quis dui pretium, eu pretium lorem viverra.",
+//     getImageSrc: () => require("../images/client.jpeg")
+//   },
+//   {
+//     rating: 5,
+//     name: "Jane Doe",
+//     review: "Nulla viverra, ligula sed sodales laoreet, mi lectus bibendum lorem.",
+//     getImageSrc: () => require("../images/client.jpeg")
+//   },
+//   {
+//     rating: 4,
+//     name: "Johnny Doe",
+//     review: "Sed mattis facilisis dolor eu viverra. Proin pellentesque blandit ante.",
+//     getImageSrc: () => require("../images/client.jpeg")
+//   },
+//   {
+//     rating: 5,
+//     name: "Jannette Doe",
+//     review: "In aliquam eros neque, ullamcorper placerat tellus porttitor vel.",
+//     getImageSrc: () => require("../images/client.jpeg")
+//   },
+//   {
+//     rating: 4,
+//     name: "Tim Doe",
+//     review: "Nunc mattis urna non dui ullamcorper, ut feugiat dui cursus.",
+//     getImageSrc: () => require("../images/client.jpeg")
+//   },
+//   {
+//     rating: 5,
+//     name: "Timette Doe",
+//     review: " Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.",
+//     getImageSrc: () => require("../images/client.jpeg")
+//   }
+// ]
 
 const ALL_AVAILABLE_TIMES = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 
@@ -104,7 +104,9 @@ export function initializeTimes(todayDate) {
 }
 
 
-function Main() {
+function Main(props) {
+  const products = props.products;
+  const ratings = props.ratings;
   const [toggle, setToggle] = useState(false);
   function changeToggle() {
     setToggle(!toggle);
@@ -148,7 +150,7 @@ function Main() {
     }
   }
 
-  const [submitted, setSubmitted]=useState(false)
+  const [submitted, setSubmitted]=useState(false);
 
   // const [bookingItems, setBookingItem] = useState({name:'', date:'', date:'', guests:'', time:'', occasion:''});
   // function bookingInfo(name, date, guests, time, occasion){
@@ -205,7 +207,7 @@ function Main() {
             {toggle && (
               <BookingPage availableTimes={availableTimes[todayDate]} updateTimes={updateTimes} createTimes={createTimes} todayDate={todayDate} setCurrentDate={updateDate} changeToggle={changeToggle} submitForm={submitForm}/>
             )}
-            {submitted && !toggle && (< ConfirmedBooking submitted={submitted}/>)}
+            {submitted && !toggle && (< ConfirmedBooking />)}
           </article>
           <figure>
             <img className="restaurantPicture" src={restaurantFoodImg} alt="restaurant food" />

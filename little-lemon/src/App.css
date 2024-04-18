@@ -416,3 +416,33 @@ button:active{
 .menu-page{
   margin-left: 1rem;
 }
+
+input:invalid {
+  border: 2px solid red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+
+.addRemButton{
+  font-size: 18px;
+  background-color: #F4CE14;
+  font-weight: bold;
+  font-family: 'Karla', sans-serif;
+  color: black;
+  text-align: center;
+  margin: 4px 2px;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+.addRemButton:hover{
+  cursor: pointer;
+}
+
+#guestsContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

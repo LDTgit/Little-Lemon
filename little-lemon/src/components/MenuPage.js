@@ -7,7 +7,7 @@ const MenuPage = (props) => {
         <div className="menu-page">
             <button><a href="/">Back to Home</a></button>
             <Heading as="h1" id="menu-section">
-            Check our our menu and place your order online
+            Check our our menu
             </Heading>
             <Box className="cardsContainerMenu">
                 {props.products.map((product) => (

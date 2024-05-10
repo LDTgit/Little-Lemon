@@ -106,7 +106,7 @@ const router = createBrowserRouter([
     ],
   },
 
-]);
+], { basename: '/Little-Lemon' });
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(

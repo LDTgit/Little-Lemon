@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Little-Lemon/static/css/main.28bfc470.css",
+    "main.js": "/Little-Lemon/static/js/main.bb3bd034.js",
+    "static/js/453.99c1801e.chunk.js": "/Little-Lemon/static/js/453.99c1801e.chunk.js",
+    "static/media/Mario and Adrian A.jpg": "/Little-Lemon/static/media/Mario and Adrian A.7f44c6d6e341a27d14b3.jpg",
+    "static/media/bruchetta.svg": "/Little-Lemon/static/media/bruchetta.29ea078fea3d3120ed22402e901b5bbc.svg",
+    "static/media/client.jpeg": "/Little-Lemon/static/media/client.1acbfdfb29ac000b5d5f.jpeg",
+    "static/media/greek salad.jpg": "/Little-Lemon/static/media/greek salad.bed423a1fab5b210e347.jpg",
+    "static/media/restauranfood.jpg": "/Little-Lemon/static/media/restauranfood.e8abf5b772b6817189aa.jpg",
+    "static/media/LogoLitttleLemon.svg": "/Little-Lemon/static/media/LogoLitttleLemon.c99f9eaa4e24dd800e4d2b1833ea4b89.svg",
+    "index.html": "/Little-Lemon/index.html",
+    "static/media/Icon-delivery.svg": "/Little-Lemon/static/media/Icon-delivery.da5bc3354e890621bcf45b8cf7b3159c.svg",
+    "static/media/🦆 icon _hamburger menu_.svg": "/Little-Lemon/static/media/🦆 icon _hamburger menu_.0da6f67ced800ab909f63d5144de37ee.svg",
+    "main.28bfc470.css.map": "/Little-Lemon/static/css/main.28bfc470.css.map",
+    "main.bb3bd034.js.map": "/Little-Lemon/static/js/main.bb3bd034.js.map",
+    "453.99c1801e.chunk.js.map": "/Little-Lemon/static/js/453.99c1801e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28bfc470.css",
+    "static/js/main.bb3bd034.js"
+  ]
+}

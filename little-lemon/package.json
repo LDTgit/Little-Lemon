@@ -1,6 +1,7 @@
 {
   "name": "little-lemon",
   "version": "0.1.0",
+  "homepage": "https://ldtgit.github.io/Little-Lemon",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.8.1",
@@ -22,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "gh-pages": "^6.1.1"
   }
 }

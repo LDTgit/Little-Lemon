@@ -5,7 +5,6 @@ const router = createBrowserRouter([
     {
       path: '/',
       element: <App />,
-    //   errorElement: <ErrorPage />,
     },
     {
         path: '/error',

@@ -1,5 +1,4 @@
 import { Heading, Box, Image, Text } from "@chakra-ui/react";
-// import ProductCard from "./ProductCard";
 
 const MenuPage = (props) => {
     console.log(props.products);

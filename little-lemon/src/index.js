@@ -6,17 +6,9 @@ import Main from './components/Main';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from "./ErrorPage";
-// import ConfirmedBooking from './components/ConfirmedBooking';
-import MenuPage from './components/MenuPage';
-// import {useState} from 'react';
-// import BookingPage from './components/BookingPage';
 
-// function ShowBooking (){
-//   const [toggle, setToggle] = useState(false);
-//   function changeToggle() {
-//     setToggle(!toggle);
-//   }
-// }
+import MenuPage from './components/MenuPage';
+
 const products = [
   {
     title: "Greek salad",
@@ -103,10 +95,6 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      // {
-      //   path: "booking-confirmation",
-      //   element: <ConfirmedBooking />,
-      // },
       {
         path: "",
         element: <Main products={products} ratings={ratings}/>,

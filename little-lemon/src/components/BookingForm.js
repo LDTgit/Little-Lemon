@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Box } from "@chakra-ui/react";
-// import { use } from 'express/lib/router';
 
 const BookingForm = ({ availableTimes, updateTimes, createTimes, todayDate, setCurrentDate, changeToggle, submitForm }) => {
   const [name, setName] = useState("");
@@ -26,17 +25,16 @@ const BookingForm = ({ availableTimes, updateTimes, createTimes, todayDate, setC
   firstDate.setHours(0, 0, 0, 0);
   secondDate.setHours(0, 0, 0, 0);
   const hour = time.slice(0, 2);
-  // console.log("Current time: ", currentTime);
-  // console.log("Selected time: ", hour);
 
   const handleSubmit = (e) => {
     updateTimes(date, time);
     e.preventDefault();
-    // submitAPI(e);
     // setSubmitted(true);
     // setErrors(validateValues(name, date, guests));
     // setSubmitting(true);
     changeToggle();
+    // console.log(date);
+    // console.log(time);
     submitForm({
       name: name,
       date: date,
@@ -45,7 +43,6 @@ const BookingForm = ({ availableTimes, updateTimes, createTimes, todayDate, setC
       occasion: occasion
     })
   }
-
 
   function getDateTimes(newDate) {
     setCurrentDate(newDate);
@@ -57,23 +54,20 @@ const BookingForm = ({ availableTimes, updateTimes, createTimes, todayDate, setC
     setTime(availableTimes[0]);
   }, [availableTimes]);
 
-  function enabledSubmitButton(){
+  function enabledSubmitButton() {
     return <button type="submit" aria-label="On Click">Make Your Reservation</button>
   }
 
-  function disabledSubmitButton(){
+  function disabledSubmitButton() {
     return <button type="submit" disabled>Make Your Reservation</button>
   }
 
   function SubmitButton() {
-
     if (name.length <= 2) return disabledSubmitButton();
-    if (availableTimes.length <=0) return disabledSubmitButton();
+    if (availableTimes.length <= 0) return disabledSubmitButton();
     if (10 < guests || guests < 1) return disabledSubmitButton();
     if ((firstDate > secondDate)) return disabledSubmitButton();
-    console.log(secondDate);
-    console.log(firstDate);
-    if (firstDate.getTime() === secondDate.getTime()){
+    if (firstDate.getTime() === secondDate.getTime()) {
       if (currentTime >= hour) return disabledSubmitButton();
     }
     return enabledSubmitButton();
@@ -97,7 +91,7 @@ const BookingForm = ({ availableTimes, updateTimes, createTimes, todayDate, setC
             <label htmlFor='res-date'>Choose date:</label>
             <input id='res-date' type='date' name='res-date' value={date}
               onChange={(e) => getDateTimes(e.target.value)} />
-            {(date < todayDate) ? (
+            {(firstDate > secondDate) ? (
               <p className="error">
                 *The selected date cannot be before today.
               </p>
@@ -106,27 +100,10 @@ const BookingForm = ({ availableTimes, updateTimes, createTimes, todayDate, setC
           <div className='form-field'>
             <label htmlFor="guests">Number of guests:</label>
             <div id='guestsContainer'>
-              <span className="addRemButton" onClick={removeGuest}>-   </span>
+              <div className="addRemButton" onClick={removeGuest}>-   </div>
               <span>{guests}   </span>
-              <span className="addRemButton" onClick={addGuest}>+</span>
+              <div className="addRemButton" onClick={addGuest}>+</div>
             </div>
-            {(guests < 1 ?? guests > 10) ? (
-              <p className="error">
-                *The minimum amount of guests is 1 and the maximim amout is 10.
-              </p>
-            ) : null}
-            {/* <input
-              aria-required
-              id="guests"
-              typeof='number'
-              placeholder='1'
-              min={1}
-              max={10}
-              step={1}
-              value={guests}
-              onChange={handleChange}
-            /> */}
-
           </div>
           <div className='form-field'>
             <label htmlFor="res-time">Choose time:</label>
@@ -136,7 +113,7 @@ const BookingForm = ({ availableTimes, updateTimes, createTimes, todayDate, setC
                 <option key={index} value={time}>{time}</option>
               ))}
             </select>
-            {(hour <= currentTime) ? (
+            {((firstDate >= secondDate) && (hour <= currentTime)) ? (
               <p className="error">
                 *You cannot book a table for this hour.
               </p>
@@ -149,15 +126,8 @@ const BookingForm = ({ availableTimes, updateTimes, createTimes, todayDate, setC
               <option value="Birthday">Birthday</option>
               <option value="Anniversary">Anniversary</option>
             </select>
-            {(occasion !== "Birthday" && occasion !== "Anniversary") ? (
-              <p className="error">
-                *Please select the occasion between Birthday and Anniversary.
-              </p>
-            ) : null}
           </div>
-
           <SubmitButton />
-
         </fieldset>
       </form>
     </Box>

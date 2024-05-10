@@ -1,52 +1,82 @@
-@media screen and (max-width: 849px) {
+@media screen and (max-width: 540px) {
+  .restaurantPicture {
+    display: none;
+  }
 
-  h1 {
-    font-size: 4vw;
+  .heroSection {
+    grid-template-columns: 1fr;
+    height: 100%;
   }
-  h2 {
-    font-size: 3.5vw;
+
+  .aboutSection {
+    flex-direction: column;
   }
-  h3 {
-    font-size: 3vw;
+
+  .ownerPicture {
+    width: 98vw;
   }
-  h4{
-    font-size: 2.5vw;
-    margin-block: 0px;
-  }
-  h5{
-    font-size: 2.5vw;
-  }
-  p, li, a {
-    font-size: 2vw;
-  }
-  button{
-    font-size: 2vw;
+
+  footer {
+    grid-template-columns: repeat(2, 50%);
+    justify-items: center;
   }
 }
-@media screen and (min-width: 850px) {
-  h1 {
-    font-size: 35px;
+
+@media screen and (min-width: 541px) {
+  .restaurantPicture {
+    display: block;
   }
-  h2 {
-    font-size: 30px;
+
+  .heroSection {
+    grid-template-columns: 1fr 1fr;
+    height: 40vw;
   }
-  h3 {
-    font-size: 25px;
+
+  .aboutSection {
+    flex-direction: row;
   }
-  h4{
-    font-size: 20px;
-    margin-block: 0px;
+
+  footer {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
   }
-  h5{
-    font-size: 18px;
-  }
-  p, li, a {
-    font-size: 16px;
-  }
-  button {
-    font-size: 1.5vw;
+
+  .ownerPicture {
+    width: 60vw;
   }
 }
+
+h1 {
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: 20px;
+  margin-block: 0px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+p,
+li,
+a,
+label {
+  font-size: 16px;
+}
+
+button {
+  font-size: 1.5vw;
+}
+
 
 .App {
   text-align: center;
@@ -82,6 +112,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -93,27 +124,32 @@ body {
   overscroll-behavior: none;
 }
 
-.logo-nav, .heroSection>article:first-child, .highlightsSection, .testimonialsSection, .aboutSection{
-  padding-left:1vw;
+.logo-nav,
+.heroSection>article:first-child,
+.highlightsSection,
+.testimonialsSection,
+.aboutSection {
+  padding-left: 1vw;
   padding-right: 1vw;
 }
+
 footer {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
   background-color: #EDEFEE;
 }
 
-footer>section:first-child{
+footer>section:first-child {
   display: grid;
   align-items: center;
 }
 
-footer>section>img{
+footer>section>img {
   display: flow;
   justify-self: center;
   align-items: center;
   width: 20vw;
 }
+
 .logo-nav {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -124,11 +160,12 @@ nav {
   justify-content: flex-end;
 }
 
-nav menu{
+nav menu {
   display: flex;
   justify-content: flex-end;
 }
-menu{
+
+menu {
   padding-inline-start: 0px;
 }
 
@@ -136,11 +173,11 @@ nav menu li {
   margin-left: 0.5rem;
 }
 
-li{
+li {
   list-style: none;
 }
 
-li a {
+a {
   text-decoration: none;
   font-weight: 600;
   font-family: 'Karla', sans-serif;
@@ -152,7 +189,7 @@ a:hover {
   color: grey;
 }
 
-figure{
+figure {
   margin-inline-start: 0;
   margin-inline-end: 0;
   margin-block-start: 0;
@@ -165,19 +202,18 @@ figure{
   float: right;
   object-fit: cover;
 }
-.heroSection{
+
+.heroSection {
   background-color: #495E57;
   color: white;
   display: inline-grid;
-  grid-template-columns: 1fr 1fr;
-  height: 40vw;
 }
 
 .height-fit-content {
   height: fit-content;
 }
 
-.heroSection h1{
+.heroSection h1 {
   font-family: 'Markazi Text', 'Roboto', sans-serif;
   font-size: 4vw;
   color: #F4CE14;
@@ -187,69 +223,88 @@ figure{
 
 button {
   background-color: #F4CE14;
-  border-color: #F4CE14;
-  
+  border-radius: 12px;
+  color: #000;
+  cursor: pointer;
   font-weight: bold;
-  font-family: 'Karla', sans-serif;
-  border-radius: 1rem;
-  width: 20vw;
-  min-height: 2.5em;
+  padding: 10px 15px;
+  text-align: center;
+  transition: 200ms;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-button:active{
+button:not(:disabled):hover,
+button:not(:disabled):focus {
+  outline: 0;
+  background: #F4CE14;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .2), 0 3px 8px 0 rgba(0, 0, 0, .15);
+}
+
+button:disabled {
+  filter: saturate(0.2) opacity(0.5);
+  -webkit-filter: saturate(0.2) opacity(0.5);
+  cursor: not-allowed;
+}
+
+button:active {
   background-color: #495E57;
   border-color: #495E57;
   color: #F4CE14;
 }
 
-.highlightsSection{
+.highlightsSection {
   display: grid;
   margin-top: 10%;
   grid-template-columns: 1fr;
 }
 
-.highlightsSection>article:first-child{
+.highlightsSection>article:first-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
 }
 
-.productImage{
-  width: 35vw;
-  max-width: 300px;
-  height: 20vw;
+.productImage {
+  width: -webkit-fill-available;
+  height: 10rem;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   border: solid 0.1rem;
   object-fit: cover;
 }
 
-.cardsContainer{
+.cardsContainer {
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 2rem;
   overflow-x: scroll;
   grid-auto-flow: column;
 }
 
-.deliveryIcon{
+.deliveryIcon {
   width: 5vw;
 }
 
-.productCard{
+.productCard {
   background-color: #EDEFEE;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  width: 35vw;
+  width: -webkit-fill-available;
   max-width: 300px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
-.productCard:hover{
+.productCard:hover {
   background-color: #FBDABB;
 }
 
-.titlePrice, .delivery{
+.titlePrice,
+.delivery {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -257,32 +312,32 @@ button:active{
   margin-block-end: 0;
 }
 
-.price{
+.price {
   color: #EE9972;
   font-family: 'Karla', sans-serif;
 }
 
-.testimonialCardsContainer{
+.testimonialCardsContainer {
   display: grid;
   grid-gap: 1.25rem;
   overflow-x: scroll;
   grid-auto-flow: column;
 }
-.testimonialCard{
-  /* min-width: 30vw */
+
+.testimonialCard {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
-.testimonialContainer{
+.testimonialContainer {
   margin: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 20vw;
+  min-width: 140px;
 }
 
-.reviewImage{
+.reviewImage {
   border-radius: 50%;
   width: 10vw;
   height: 10vw;
@@ -293,11 +348,10 @@ button:active{
   border-radius: 1rem;
   float: right;
   object-fit: cover;
-  width: 60vw;
   height: fit-content;
 }
 
-.aboutSection{
+.aboutSection {
   display: flex;
 }
 
@@ -315,15 +369,17 @@ button:active{
   background: #a90000;
 }
 
-.logo{
+.logo {
   max-width: 30vw;
 }
-.bm-item-list{
+
+.bm-item-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-.menu-item-sm{
+
+.menu-item-sm {
   font-size: 4em;
   color: white;
 }
@@ -359,19 +415,21 @@ button:active{
   gap: 20px;
 }
 
-.form-field{
+.form-field {
   display: grid;
   padding-block-end: 1vh;
 }
 
-.starReceived{
-  color:#F4CE14;
+.starReceived {
+  color: #F4CE14;
 }
-.starList{
+
+.starList {
   display: flex;
   padding-inline-start: 0px;
 }
-.confirm-booking-page{
+
+.confirm-booking-page {
   box-shadow: 5px 5px 5px #000;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -379,7 +437,8 @@ button:active{
   margin-left: 8px;
   margin-top: 8px
 }
-#confirm-booking-section{
+
+#confirm-booking-section {
   color: #F4CE14;
   display: flex;
   justify-content: space-around;
@@ -391,13 +450,13 @@ button:active{
   text-decoration: none;
 }
 
-.cardsContainerMenu{
+.cardsContainerMenu {
   display: grid;
   grid-gap: 1.5rem;
   grid-template-columns: 1fr;
 }
 
-.productCardMenu{
+.productCardMenu {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-right: 1rem;
@@ -405,7 +464,7 @@ button:active{
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
-.productImageMenu{
+.productImageMenu {
   width: 35vw;
   max-width: 300px;
   border-radius: 1rem;
@@ -413,7 +472,7 @@ button:active{
   object-fit: cover;
 }
 
-.menu-page{
+.menu-page {
   margin-left: 1rem;
 }
 
@@ -425,24 +484,24 @@ input:valid {
   border: 2px solid black;
 }
 
-.addRemButton{
-  font-size: 18px;
-  background-color: #F4CE14;
-  font-weight: bold;
-  font-family: 'Karla', sans-serif;
+.addRemButton {
   color: black;
   text-align: center;
-  margin: 4px 2px;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  background-color: #F4CE14;
+  font-weight: bold;
+  padding: 5px 12px;
+  text-align: center;
+  font-size: 16px;
 }
-.addRemButton:hover{
+
+.addRemButton:hover {
   cursor: pointer;
 }
 
-#guestsContainer{
+#guestsContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin: 4px 2px;
 }

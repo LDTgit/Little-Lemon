@@ -1,5 +1,4 @@
 import { Heading, Image, Text, VStack } from "@chakra-ui/react";
-// import { FaRegStar } from "react-icons/fa";
 import { TbStarFilled } from "react-icons/tb";
 
 const maxRating =5;
